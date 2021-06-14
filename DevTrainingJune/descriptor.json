@@ -2,8 +2,9 @@
   "Descriptor": {
     "UId": "b8731c12-bc8b-fc1b-7ad7-93be173814db",
     "Name": "DevTrainingJune",
-    "ModifiedOnUtc": "\/Date(1623691904000)\/",
+    "ModifiedOnUtc": "\/Date(1623695888000)\/",
     "Maintainer": "Customer",
+    "Description": "https://github.com/Academy-Creatio/DEV_JUNE",
     "DependsOn": [
       {
         "UId": "2fabaf6c-0f92-4530-aef8-40345c021da2",
