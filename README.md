@@ -1,0 +1,3 @@
+# DEV TRAINING JUNE 2021
+
+Kirill
