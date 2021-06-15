@@ -1,0 +1,17 @@
+{
+  "Descriptor": {
+    "UId": "8b5786f3-ca3c-4b74-ba29-204412e9f6d6",
+    "PackageVersion": "7.8.0",
+    "Name": "WorkshopWorkingWithData",
+    "ModifiedOnUtc": "/Date(1597049726000)/",
+    "Maintainer": "Customer",
+    "Description": "Dev Training - Working with Data",
+    "DependsOn": [
+		{
+			"UId": "2fabaf6c-0f92-4530-aef8-40345c021da2",
+			"PackageVersion": "7.8.0",
+			"Name": "ProductCore"
+		  }
+    ]
+  }
+}

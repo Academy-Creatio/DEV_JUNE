@@ -1,0 +1,17 @@
+{
+  "Descriptor": {
+    "UId": "aa73ac87-a8fe-4ce8-9ba3-fb5cf698d9b9",
+    "PackageVersion": "7.8.0",
+    "Name": "DeTrainingJuneClio",
+    "ModifiedOnUtc": "/Date(1623776895000)/",
+    "Maintainer": "Customer",
+	"Description": "Working with FileContent Example",
+    "DependsOn": [
+		{
+		  "UId": "2fabaf6c-0f92-4530-aef8-40345c021da2",
+		  "PackageVersion": "7.8.0",
+		  "Name": "ProductCore"
+		}
+	  ]
+  }
+}
