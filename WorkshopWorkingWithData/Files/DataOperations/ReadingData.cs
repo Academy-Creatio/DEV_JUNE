@@ -89,11 +89,10 @@ namespace WorkshopWorkingWithData.Files.DataOperations
 				.Column("Contact", "Name").As("ContactName")
 				.Column("Email")
 				.Column("Phone")
-				.From("Contact")
+				.From("Contact").WithHints(Hints.NoLock)
 				.Where("Email").IsEqual(Column.Parameter(email)) as Select;
 
 			DataTable dt;
-
 			using (DBExecutor dbExecutor = UserConnection.EnsureDBConnection(QueryKind.General))
 			{
 				using (IDataReader reader = select.ExecuteReader(dbExecutor))
@@ -114,7 +113,9 @@ namespace WorkshopWorkingWithData.Files.DataOperations
 			esqResult.AddColumn("Email");
 			esqResult.AddColumn("Phone");
 
-			IEntitySchemaQueryFilterItem filterByEmail = esqResult.CreateFilterWithParameters(FilterComparisonType.Equal, "Email", email);
+			IEntitySchemaQueryFilterItem filterByEmail = 
+				esqResult.CreateFilterWithParameters(FilterComparisonType.Equal,
+				"Email", email);
 			esqResult.Filters.Add(filterByEmail);
 
 			Select select = esqResult.GetSelectQuery(UserConnection);
@@ -131,7 +132,6 @@ namespace WorkshopWorkingWithData.Files.DataOperations
 			where Email ='{email}'");
 
 			DataTable dt;
-
 			using (DBExecutor dbExecutor = UserConnection.EnsureDBConnection(QueryKind.General))
 			{
 				using (IDataReader reader = custom.ExecuteReader(dbExecutor))
@@ -150,15 +150,16 @@ namespace WorkshopWorkingWithData.Files.DataOperations
 			Select select = new Select(UserConnection)
 				.Column("Contact", "Name").As("ContactName")
 				.Column("SysAdminUnit", "Name").As("SysAdminUnitName")
-				.From("Contact")
-				.LeftOuterJoin("SysAdminUnit").On("Contact", "Id").IsEqual("SysAdminUnit", "ContactId")
+				.From("Contact").WithHints(Hints.NoLock)
+				.LeftOuterJoin("SysAdminUnit").WithHints(Hints.NoLock)
+					.On("Contact", "Id")
+					.IsEqual("SysAdminUnit", "ContactId")
 				as Select;
 			
 			//select.Where("SysAdminUnit", "Name").IsNotEqual(Column.Parameter(""));
 			select.Where("SysAdminUnit", "Name").Not().IsNull();
 
 			DataTable dt;
-
 			using (DBExecutor dbExecutor = UserConnection.EnsureDBConnection(QueryKind.General))
 			{
 				using (IDataReader reader = select.ExecuteReader(dbExecutor))
@@ -178,7 +179,7 @@ namespace WorkshopWorkingWithData.Files.DataOperations
 			// read Name of SysAdminUnit connected to Contact
 			// https://academy.creatio.com/documents/technic-sdk/7-16/entityschemaquery-class-building-paths-columns
 			// [Name_of_ joinable_schema:Name_of_column_for_linking_of_joinable_schema:Name_of_column_for_linking_of_current_schema].
-			var sysAdminUnitName = esqResult.AddColumn("[SysAdminUnit:Contact:Id].Name"); 
+			var sysAdminUnitName = esqResult.AddColumn("[SysAdminUnit:Contact:Id].Name");
 			sysAdminUnitName.Name = "sysAdminUnitName";
 
 			Select select = esqResult.GetSelectQuery(UserConnection);
@@ -193,15 +194,18 @@ namespace WorkshopWorkingWithData.Files.DataOperations
 		internal Tuple<DataTable, string> GetContactsWithMinutesEsq(Guid ContactId)
 		{
 			const string tableName = "Activity";
-			EntitySchemaQuery esqResult = new EntitySchemaQuery(UserConnection.EntitySchemaManager, tableName);
+			EntitySchemaQuery esqResult = new EntitySchemaQuery(
+				 UserConnection.EntitySchemaManager, tableName);
 			esqResult.AddColumn("Owner.Id");
 			esqResult.AddColumn("Owner.Name");
-			var durationInMinutes = esqResult.CreateAggregationFunction(AggregationTypeStrict.Sum, "DurationInMinutes");
+			var durationInMinutes = esqResult.CreateAggregationFunction(
+				 AggregationTypeStrict.Sum, "DurationInMinutes");
 			durationInMinutes.Name = "DurationInMinutes";
 			esqResult.AddColumn(durationInMinutes);
 			
 			
-			IEntitySchemaQueryFilterItem filterByContactId = esqResult.CreateFilterWithParameters(FilterComparisonType.Equal, "Owner.Id", ContactId);
+			IEntitySchemaQueryFilterItem filterByContactId = esqResult.CreateFilterWithParameters(
+				FilterComparisonType.Equal, "Owner.Id", ContactId);
 			esqResult.Filters.Add(filterByContactId);
 
 			Select select = esqResult.GetSelectQuery(UserConnection);
@@ -214,17 +218,18 @@ namespace WorkshopWorkingWithData.Files.DataOperations
 		{
 			Select select = new Select(UserConnection)
 				.Column("Activity", "OwnerId").As("OwnerId")
-				.Column(Func.Max("Contact", "Name")).As("ContactName")
+				.Column(Func.Max("Contact", "Name")).As("Contact Name")
 				.Column(Func.Sum("Activity", "DurationInMinutes")).As("Total Duration")
-				.From("Activity")
-				.LeftOuterJoin("Contact").On("Contact", "Id").IsEqual("Activity", "OwnerId")
+				.From("Activity").WithHints(Hints.NoLock)
+				.LeftOuterJoin("Contact").WithHints(Hints.NoLock)
+					.On("Contact", "Id").IsEqual("Activity", "OwnerId")
 				.GroupBy("Activity", "OwnerId")
-				.Having(Func.Sum("Activity", "DurationInMinutes")).IsGreater(Column.Parameter(150))
+				.Having(Func.Sum("Activity", "DurationInMinutes"))
+					.IsGreater(Column.Parameter(150))
 				as Select;
 			select.Where("Activity", "OwnerId").IsEqual(Column.Parameter(ContactId));
 
 			DataTable dt;
-
 			using (DBExecutor dbExecutor = UserConnection.EnsureDBConnection(QueryKind.General))
 			{
 				using (IDataReader reader = select.ExecuteReader(dbExecutor))

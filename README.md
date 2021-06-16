@@ -22,8 +22,8 @@
 |:--:|:--:|
 |1|[Link][d1v]|
 |2|[Link][d2v]|
-<!-- 
 |3|[Link][d3v]|
+<!-- 
 |4|[Link][d4v]|
 |5|[Link][d5v]|
 |6|[Link][d6v]|
@@ -46,8 +46,8 @@ Thank you for having taken development training with me. In order to make this c
 <!-- Named Links -->
 [d1v]: https://creatio-global.zoom.us/rec/play/INgA3BOj__NJXXKXgRMr9aaX4QREQOOQ4hp6stmC9oTkTKvqEWlOBheUk7F-IM3gw0LjqxuegQMBWVzq.Y-M9Yczw2qWGchug
 [d2v]: https://creatio-global.zoom.us/rec/play/Jd8mD0mr9yj-sEPGGtrSMTZmyRC-1HAvWLbHr58s0ICSHpou5iNTs_uDjS3QJbPD7jZgUdDDwJLMOos.0-y9nD2cqqW5fTbX
+[d3v]: https://creatio-global.zoom.us/rec/play/xbiczDT2Fx6ogcantBHZHAYAhS9hU9wphHCAUWwt659JiZ6ieEUxW51n3r9BmFP4mRzGZ5ivseH0Bf8.oKQ6tgC4QAVTHhna
 <!-- 
-[d3v]: 
 [d4v]: 
 [d5v]: 
 [d6v]: 

@@ -3,6 +3,8 @@
 	<Group Type="String">
 		<Items>
 			<Item Name="BaseElements.ScriptTask_MyFirstScriptTaks.Caption" Value="My First ScriptTaks" />
+			<Item Name="BaseElements.StartSignal1.Caption" Value="onAfterModified" />
+			<Item Name="BaseElements.StartSignal1.Parameters.RecordId.Caption" Value="Unique identifier of record" />
 			<Item Name="Caption" Value="DEV Practice Debug" />
 			<Item Name="LaneSets.LaneSet1.Caption" Value="LaneSet 1" />
 			<Item Name="LaneSets.LaneSet1.Lanes.Lane1.Caption" Value="Lane 1" />

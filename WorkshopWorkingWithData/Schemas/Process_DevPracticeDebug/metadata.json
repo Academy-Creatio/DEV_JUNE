@@ -17,7 +17,7 @@
           "GF1": "null"
         }
       ],
-      "B6": "b8731c12-bc8b-fc1b-7ad7-93be173814db",
+      "B6": "8b5786f3-ca3c-4b74-ba29-204412e9f6d6",
       "B8": "7.18.0.1353",
       "FJ1": [],
       "IJ1": true,
@@ -71,22 +71,6 @@
       "BK5": [],
       "BK4": [
         {
-          "BL1": "Terrasoft.Core.Process.ProcessSchemaStartEvent",
-          "UId": "91ba21fc-e9b2-4c5c-a3a1-c3e1ac7a0c7b",
-          "A2": "StartEvent1",
-          "A3": "9aba12af-6449-4ba0-8b9f-6c15a142cf7b",
-          "A4": "9aba12af-6449-4ba0-8b9f-6c15a142cf7b",
-          "A5": "b8731c12-bc8b-fc1b-7ad7-93be173814db",
-          "IL2": "60edf7be-a0f2-47c3-9399-8ded320db6c3",
-          "BL3": "50;184",
-          "BL7": "53818048-7868-48f6-ada0-0ebaa65af628",
-          "BL8": "9aba12af-6449-4ba0-8b9f-6c15a142cf7b",
-          "BN2": "31;31",
-          "BO3": true,
-          "FC1": [],
-          "ED1": false
-        },
-        {
           "BL1": "Terrasoft.Core.Process.ProcessSchemaTerminateEvent",
           "UId": "43d2759e-5a6b-4bde-86bb-a3642fb9d363",
           "A2": "TerminateEvent1",
@@ -118,6 +102,45 @@
           "CL2": "FFFFFFFF",
           "CH1": "LogInfo();\n\nint a = 10+15;\nreturn true;",
           "CH2": true
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaStartSignalEvent",
+          "UId": "91ba21fc-e9b2-4c5c-a3a1-c3e1ac7a0c7b",
+          "A2": "StartSignal1",
+          "A3": "9aba12af-6449-4ba0-8b9f-6c15a142cf7b",
+          "A4": "9aba12af-6449-4ba0-8b9f-6c15a142cf7b",
+          "A5": "b8731c12-bc8b-fc1b-7ad7-93be173814db",
+          "IL2": "60edf7be-a0f2-47c3-9399-8ded320db6c3",
+          "IL3": true,
+          "BL3": "50;184",
+          "BL7": "1129e72f-0e8c-445a-b2ea-463517e86395",
+          "BL8": "9aba12af-6449-4ba0-8b9f-6c15a142cf7b",
+          "BN2": "31;31",
+          "BO3": true,
+          "FC1": [
+            {
+              "BL1": "Terrasoft.Core.Process.ProcessSchemaParameter",
+              "UId": "e2732214-df8c-47d8-a102-f9a911b0c33d",
+              "A2": "RecordId",
+              "A3": "9aba12af-6449-4ba0-8b9f-6c15a142cf7b",
+              "A4": "9aba12af-6449-4ba0-8b9f-6c15a142cf7b",
+              "IL2": "91ba21fc-e9b2-4c5c-a3a1-c3e1ac7a0c7b",
+              "L1": "23018567-a13c-4320-8687-fd6f9e3699bd",
+              "L8": {
+                "GS1": 1,
+                "GS2": ""
+              }
+            }
+          ],
+          "FC2": "16be3651-8fe2-4159-8dd0-a803d4683dd3",
+          "ED1": false,
+          "DZ1": "null",
+          "DZ2": false,
+          "DZ3": true,
+          "DZ5": 2,
+          "DZ11": true,
+          "DZ12": "{\"$type\":\"System.Collections.ObjectModel.Collection`1[[System.String, mscorlib]], mscorlib\",\"$values\":[\"a5cca792-47dd-428a-83fb-5c92bdd97ff8\"]}",
+          "DZ13": "{\"className\":\"Terrasoft.FilterGroup\",\"serializedFilterEditData\":\"{\\\"className\\\":\\\"Terrasoft.FilterGroup\\\",\\\"items\\\":{},\\\"logicalOperation\\\":0,\\\"isEnabled\\\":true,\\\"filterType\\\":6,\\\"rootSchemaName\\\":\\\"Contact\\\",\\\"key\\\":\\\"\\\"}\",\"dataSourceFilters\":\"{\\\"items\\\":{},\\\"logicalOperation\\\":0,\\\"isEnabled\\\":true,\\\"filterType\\\":6,\\\"rootSchemaName\\\":\\\"Contact\\\"}\"}"
         },
         {
           "BL1": "Terrasoft.Core.Process.ProcessSchemaSequenceFlow",

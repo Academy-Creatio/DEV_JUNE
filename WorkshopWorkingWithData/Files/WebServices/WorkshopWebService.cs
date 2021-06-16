@@ -28,8 +28,6 @@ namespace WorkshopWorkingWithData
 		private HttpContext _httpContext;
 		protected virtual HttpContext CurrentHttpContext =>
 			_httpContext ?? (_httpContext = HttpContextAccessor.GetInstance());
-
-
 		private ReadingData ReadingData { get; set; }
 		private UpdatingData UpdatingData { get; set; }
 		private InsertingData InsertingData { get; set; }
@@ -230,12 +228,12 @@ namespace WorkshopWorkingWithData
 		[WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Wrapped, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
 		public string DeleteContact(QuryType qt, Guid ContactId)
 		{
-			// http://k_krylov:7070/0/rest/WorkshopWebService/DeleteContact?qt=1&ContactId=060b93d0-0b94-4967-af32-030ac0844ec9
+			// http://k_krylov:7070/0/rest/WorkshopWebService/DeleteContact?qt=5&ContactId=060b93d0-0b94-4967-af32-030ac0844ec9
 			Timer.Start();
 			string result = string.Empty;
 			switch (qt)
 			{
-				case QuryType.INSERT:
+				case QuryType.DELETE:
 					result = DeletingData.DeleteContact(ContactId);
 					break;
 				case QuryType.ESQ:
