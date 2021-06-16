@@ -2,12 +2,14 @@
 using System.Data;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
 using System.ServiceModel.Web;
 using System.Text;
 using Terrasoft.Core;
 using Terrasoft.Web.Common;
+using Terrasoft.Web.Http.Abstractions;
 using WorkshopWorkingWithData.Files.DataOperations;
 
 namespace WorkshopWorkingWithData
@@ -16,6 +18,18 @@ namespace WorkshopWorkingWithData
 	[AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Required)]
 	public class WorkshopWebService : BaseService
 	{
+
+		/// <summary>
+		/// Gets the current HTTP context.
+		/// </summary>
+		/// <value>
+		/// The current HTTP context.
+		/// </value>
+		private HttpContext _httpContext;
+		protected virtual HttpContext CurrentHttpContext =>
+			_httpContext ?? (_httpContext = HttpContextAccessor.GetInstance());
+
+
 		private ReadingData ReadingData { get; set; }
 		private UpdatingData UpdatingData { get; set; }
 		private InsertingData InsertingData { get; set; }
@@ -23,6 +37,7 @@ namespace WorkshopWorkingWithData
 		private Stopwatch Timer { get; set;}
 		public WorkshopWebService()
 		{
+			//SetHeaderCORS();
 			ReadingData = new ReadingData(UserConnection ?? SystemUserConnection);
 			UpdatingData = new UpdatingData(UserConnection ?? SystemUserConnection);
 			InsertingData = new InsertingData(UserConnection ?? SystemUserConnection);
@@ -246,6 +261,17 @@ namespace WorkshopWorkingWithData
 			WebOperationContext.Current.OutgoingResponse.ContentLength = data.Length;
 			return new MemoryStream(data);
 		}
+
+		private void SetHeaderCORS()
+		{
+			CurrentHttpContext.Response.AddHeader("Access-Control-Allow-Origin", "*");
+		}
+		private void SetHeaderCORS(string method)
+		{
+			CurrentHttpContext.Response.AddHeader("Access-Control-Allow-Origin", "*");
+			CurrentHttpContext.Response.AddHeader("Access-Control-Allow-Methods", method);
+		}
+
 		#endregion
 	}
 }

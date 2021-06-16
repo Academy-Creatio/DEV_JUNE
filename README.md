@@ -13,8 +13,8 @@
 - [FTP] - Download Creatio
 - Import Postman Environment and Collection from Postman folder. This folder includes DataService requests
 - [Import Visual Studio][vsTpl] Templates provided in VisualStudioTemplate folder. -->
-<!-- 
 - [Odata] postman collection
+
 
 
 ## SESSION VIDEO RECODING
