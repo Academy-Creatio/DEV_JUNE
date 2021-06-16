@@ -1,0 +1,726 @@
+{
+	"info": {
+		"_postman_id": "7ac6b9e8-afde-4260-baf1-3e6d8177acf1",
+		"name": "DevTraining",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DataService",
+			"item": [
+				{
+					"name": "SELECT",
+					"item": [
+						{
+							"name": "Get All Contacts",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "BPMCSRF",
+										"value": "{{BPMCSRF}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rootSchemaName\": \"Contact\",\r\n    \"columns\": {\r\n        \"items\": {\r\n            \"Id\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Id\"\r\n                }\r\n            },\r\n            \"Name\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Name\"\r\n                }\r\n            },\r\n            \"Email\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Email\"\r\n                }\r\n            },\r\n            \"Account\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Account\"\r\n                }\r\n            },\r\n            \"AccountCountryName\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Account.Country.Name\"\r\n                }\r\n            }\r\n        }\r\n    },\r\n    \"useLocalization\": true,\r\n    \"useRecordDeactivation\": false,\r\n    \"ignoreDisplayValues\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseUri}}0/DataService/json/SyncReply/SelectQuery",
+									"host": [
+										"{{BaseUri}}0"
+									],
+									"path": [
+										"DataService",
+										"json",
+										"SyncReply",
+										"SelectQuery"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get A Contact By primary Email",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "BPMCSRF",
+										"value": "{{BPMCSRF}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rootSchemaName\": \"Contact\",\r\n    \"filters\": {\r\n        \"items\": {\r\n            \"ByPrimaryEmail\": {\r\n                \"filterType\": 1,\r\n                \"comparisonType\": 3,\r\n                \"isEnabled\": true,\r\n                \"trimDateTimeParameterToDate\": false,\r\n                \"leftExpression\": {\r\n                    \"expressionType\": 0,\r\n                    \"columnPath\": \"Email\"\r\n                },\r\n                \"rightExpression\": {\r\n                    \"expressionType\": 2,\r\n                    \"parameter\": {\r\n                        \"dataValueType\": 1,\r\n                        \"value\": \"{{EMAIL}}\"\r\n                    }\r\n                }\r\n            },\r\n            \"BySecondaryEmail\": {\r\n                \"filterType\": 5,\r\n                \"comparisonType\": 15,\r\n                \"isEnabled\": true,\r\n                \"trimDateTimeParameterToDate\": false,\r\n                \"leftExpression\": {\r\n                    \"expressionType\": 0,\r\n                    \"columnPath\": \"[ContactCommunication:Contact].Id\"\r\n                },\r\n                \"subFilters\": {\r\n                    \"items\": {\r\n                        \"70bf1e38-6f1e-42be-a7cd-af83c3095998\": {\r\n                            \"filterType\": 1,\r\n                            \"comparisonType\": 3,\r\n                            \"isEnabled\": true,\r\n                            \"trimDateTimeParameterToDate\": false,\r\n                            \"leftExpression\": {\r\n                                \"expressionType\": 0,\r\n                                \"columnPath\": \"Number\"\r\n                            },\r\n                            \"rightExpression\": {\r\n                                \"expressionType\": 2,\r\n                                \"parameter\": {\r\n                                    \"dataValueType\": 1,\r\n                                    \"value\": \"{{EMAIL}}\"\r\n                                }\r\n                            }\r\n                        }\r\n                    },\r\n                    \"logicalOperation\": 0,\r\n                    \"isEnabled\": true,\r\n                    \"filterType\": 6,\r\n                    \"rootSchemaName\": \"ContactCommunication\"\r\n                }\r\n            }\r\n        },\r\n        \"logicalOperation\": 1,\r\n        \"isEnabled\": true,\r\n        \"filterType\": 6,\r\n        \"rootSchemaName\": \"Contact\"\r\n    },\r\n    \"columns\": {\r\n        \"items\": {\r\n            \"Id\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Id\"\r\n                }\r\n            },\r\n            \"Name\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Name\"\r\n                }\r\n            },\r\n            \"Email\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Email\"\r\n                }\r\n            },\r\n            \"Account\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Account\"\r\n                }\r\n            },\r\n            \"AccountCountryName\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Account.Country.Name\"\r\n                }\r\n            }\r\n        }\r\n    },\r\n    \"useLocalization\": true,\r\n    \"useRecordDeactivation\": false,\r\n    \"ignoreDisplayValues\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseUri}}0/DataService/json/SyncReply/SelectQuery",
+									"host": [
+										"{{BaseUri}}0"
+									],
+									"path": [
+										"DataService",
+										"json",
+										"SyncReply",
+										"SelectQuery"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Contact by Email",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "BPMCSRF",
+										"value": "{{BPMCSRF}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rootSchemaName\": \"Contact\",\r\n    \"filters\": {\r\n        \"items\": {\r\n            \"PrimaryEmail\": {\r\n                \"filterType\": 1,\r\n                \"comparisonType\": 3,\r\n                \"isEnabled\": true,\r\n                \"trimDateTimeParameterToDate\": false,\r\n                \"leftExpression\": {\r\n                    \"expressionType\": 0,\r\n                    \"columnPath\": \"Email\"\r\n                },\r\n                \"rightExpression\": {\r\n                    \"expressionType\": 2,\r\n                    \"parameter\": {\r\n                        \"dataValueType\": 1,\r\n                        \"value\": \"a.baker@ac.com\"\r\n                    }\r\n                }\r\n            },\r\n            \"SecondaryEmail\": {\r\n                \"filterType\": 5,\r\n                \"comparisonType\": 15,\r\n                \"isEnabled\": true,\r\n                \"trimDateTimeParameterToDate\": false,\r\n                \"leftExpression\": {\r\n                    \"expressionType\": 0,\r\n                    \"columnPath\": \"[ContactCommunication:Contact].Id\"\r\n                },\r\n                \"subFilters\": {\r\n                    \"items\": {\r\n                        \"eb0f3b5d-e515-49fa-b349-d9b19c7cf620\": {\r\n                            \"filterType\": 1,\r\n                            \"comparisonType\": 3,\r\n                            \"isEnabled\": true,\r\n                            \"trimDateTimeParameterToDate\": false,\r\n                            \"leftExpression\": {\r\n                                \"expressionType\": 0,\r\n                                \"columnPath\": \"Number\"\r\n                            },\r\n                            \"rightExpression\": {\r\n                                \"expressionType\": 2,\r\n                                \"parameter\": {\r\n                                    \"dataValueType\": 1,\r\n                                    \"value\": \"a.baker@ac.com\"\r\n                                }\r\n                            }\r\n                        }\r\n                    },\r\n                    \"logicalOperation\": 0,\r\n                    \"isEnabled\": true,\r\n                    \"filterType\": 6,\r\n                    \"rootSchemaName\": \"ContactCommunication\"\r\n                }\r\n            }\r\n        },\r\n        \"logicalOperation\": 1,\r\n        \"isEnabled\": true,\r\n        \"filterType\": 6,\r\n        \"rootSchemaName\": \"Contact\"\r\n    },\r\n    \"columns\": {\r\n        \"items\": {\r\n            \"Id\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Id\"\r\n                }\r\n            },\r\n            \"Name\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Name\"\r\n                }\r\n            },\r\n            \"Country\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Country.Name\"\r\n                }\r\n            },\r\n            \"Email\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Email\"\r\n                }\r\n            },\r\n            \"WrongColunmName\": {\r\n                \"expression\": {\r\n                    \"columnPath\": \"Emailllllll\"\r\n                }\r\n            },\r\n            \"DurationOnPhone\": {\r\n\t\t\t\t\"expression\": {\r\n\t\t\t\t\t\"expressionType\": 3,\r\n\t\t\t\t\t\"functionType\": 2,\r\n\t\t\t\t\t\"aggregationType\": 2,\r\n\t\t\t\t\t\"columnPath\": \"[Activity:Owner].DurationInMinutes\",\r\n\t\t\t\t\t\"subFilters\": {\r\n\t\t\t\t\t\t\"items\": {\r\n\t\t\t\t\t\t\t\"ByType\": {\r\n\t\t\t\t\t\t\t\t\"filterType\": 4,\r\n\t\t\t\t\t\t\t\t\"comparisonType\": 3,\r\n\t\t\t\t\t\t\t\t\"isEnabled\": true,\r\n\t\t\t\t\t\t\t\t\"trimDateTimeParameterToDate\": false,\r\n\t\t\t\t\t\t\t\t\"leftExpression\": {\r\n\t\t\t\t\t\t\t\t\t\"expressionType\": 0,\r\n\t\t\t\t\t\t\t\t\t\"columnPath\": \"Type\"\r\n\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\"rightExpressions\": [\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\"expressionType\": 2,\r\n\t\t\t\t\t\t\t\t\t\t\"parameter\": {\r\n\t\t\t\t\t\t\t\t\t\t\t\"dataValueType\": 10,\r\n\t\t\t\t\t\t\t\t\t\t\t\"value\": \"fbe0acdc-cfc0-df11-b00f-001d60e938c6\"\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t]\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"ByActivityCategory\": {\r\n\t\t\t\t\t\t\t\t\"filterType\": 4,\r\n\t\t\t\t\t\t\t\t\"comparisonType\": 3,\r\n\t\t\t\t\t\t\t\t\"isEnabled\": true,\r\n\t\t\t\t\t\t\t\t\"trimDateTimeParameterToDate\": false,\r\n\t\t\t\t\t\t\t\t\"leftExpression\": {\r\n\t\t\t\t\t\t\t\t\t\"expressionType\": 0,\r\n\t\t\t\t\t\t\t\t\t\"columnPath\": \"ActivityCategory\"\r\n\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\"rightExpressions\": [\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\"expressionType\": 2,\r\n\t\t\t\t\t\t\t\t\t\t\"parameter\": {\r\n\t\t\t\t\t\t\t\t\t\t\t\"dataValueType\": 10,\r\n\t\t\t\t\t\t\t\t\t\t\t\"value\": \"f51c4643-58e6-df11-971b-001d60e938c6\"\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t]\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"ByStatus\": {\r\n\t\t\t\t\t\t\t\t\"filterType\": 4,\r\n\t\t\t\t\t\t\t\t\"comparisonType\": 3,\r\n\t\t\t\t\t\t\t\t\"isEnabled\": true,\r\n\t\t\t\t\t\t\t\t\"trimDateTimeParameterToDate\": false,\r\n\t\t\t\t\t\t\t\t\"leftExpression\": {\r\n\t\t\t\t\t\t\t\t\t\"expressionType\": 0,\r\n\t\t\t\t\t\t\t\t\t\"columnPath\": \"Status\"\r\n\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\"rightExpressions\": [\r\n\t\t\t\t\t\t\t\t\t{\r\n\t\t\t\t\t\t\t\t\t\t\"expressionType\": 2,\r\n\t\t\t\t\t\t\t\t\t\t\"parameter\": {\r\n\t\t\t\t\t\t\t\t\t\t\t\"dataValueType\": 10,\r\n\t\t\t\t\t\t\t\t\t\t\t\"value\": \"384d4b84-58e6-df11-971b-001d60e938c6\"\r\n\t\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t\t]\r\n\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\"ByStartDate\": {\r\n\t\t\t\t\t\t\t\t\"filterType\": 1,\r\n\t\t\t\t\t\t\t\t\"comparisonType\": 3,\r\n\t\t\t\t\t\t\t\t\"isEnabled\": true,\r\n\t\t\t\t\t\t\t\t\"trimDateTimeParameterToDate\": true,\r\n\t\t\t\t\t\t\t\t\"leftExpression\": {\r\n\t\t\t\t\t\t\t\t\t\"expressionType\": 0,\r\n\t\t\t\t\t\t\t\t\t\"columnPath\": \"StartDate\"\r\n\t\t\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\t\t\"rightExpression\": {\r\n\t\t\t\t\t\t\t\t\t\"expressionType\": 1,\r\n\t\t\t\t\t\t\t\t\t\"functionType\": 1,\r\n\t\t\t\t\t\t\t\t\t\"macrosType\": 10\r\n\t\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t\t}\r\n\t\t\t\t\t\t},\r\n\t\t\t\t\t\t\"logicalOperation\": 0,\r\n\t\t\t\t\t\t\"isEnabled\": true,\r\n\t\t\t\t\t\t\"filterType\": 6,\r\n\t\t\t\t\t\t\"rootSchemaName\": \"Activity\"\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t},\r\n        }\r\n    },\r\n    \"useRecordDeactivation\": false,\r\n    \"ignoreDisplayValues\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseUri}}0/DataService/json/SyncReply/SelectQuery",
+									"host": [
+										"{{BaseUri}}0"
+									],
+									"path": [
+										"DataService",
+										"json",
+										"SyncReply",
+										"SelectQuery"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "UPDATE",
+					"item": [
+						{
+							"name": "Update A Contact By primary Email",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "BPMCSRF",
+										"value": "{{BPMCSRF}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rootSchemaName\": \"Contact\",\r\n    \"filters\": {\r\n\t\t\"items\": {\r\n            \"b6deeda1-d2df-472d-9567-39135f6e6a82\": {\r\n                \"filterType\": 1,\r\n                \"comparisonType\": 3,\r\n                \"isEnabled\": true,\r\n                \"trimDateTimeParameterToDate\": false,\r\n                \"leftExpression\": {\r\n                    \"expressionType\": 0,\r\n                    \"columnPath\": \"Id\"\r\n                },\r\n                \"rightExpression\": {\r\n                    \"expressionType\": 2,\r\n                    \"parameter\": {\r\n                        \"dataValueType\": 0,\r\n                        \"value\": \"a9ae2918-2a9a-46c9-80f5-10b235065f0b\"\r\n                    }\r\n                }\r\n            }\r\n        },\r\n        \"logicalOperation\": 0,\r\n        \"isEnabled\": true,\r\n        \"filterType\": 6,\r\n        \"rootSchemaName\": \"Contact\"\r\n\t},\r\n    \"columnValues\": {\r\n\t\t\"items\": {\r\n\t\t\t\"JobTitle\": {\r\n\t\t\t\t\"expressionType\": 2,\r\n\t\t\t\t\"parameter\": {\r\n\t\t\t\t\t\"dataValueType\": 1,\r\n\t\t\t\t\t\"value\": \"value here DataService by ID\"\r\n\t\t\t\t}\r\n\t\t\t},\r\n\t\t\t\"Email\": {\r\n\t\t\t\t\"expressionType\": 2,\r\n\t\t\t\t\"parameter\": {\r\n\t\t\t\t\t\"dataValueType\": 1,\r\n\t\t\t\t\t\"value\": \"value@gmail.com\"\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}\r\n\t},\r\n    \"useRecordDeactivation\": false,\r\n    \"ignoreDisplayValues\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseUri}}0/DataService/json/SyncReply/UpdateQuery",
+									"host": [
+										"{{BaseUri}}0"
+									],
+									"path": [
+										"DataService",
+										"json",
+										"SyncReply",
+										"UpdateQuery"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "INSERT",
+					"item": [
+						{
+							"name": "Insert Contact",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "BPMCSRF",
+										"value": "{{BPMCSRF}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rootSchemaName\": \"Contact\",\r\n    \"columnValues\": {\r\n        \"items\": {\r\n            \"Name\": {\r\n                \"expressionType\": 2,\r\n                \"parameter\": {\r\n                    \"dataValueType\": 1,\r\n                    \"value\": \"Kirill DataService\"\r\n                }\r\n            },\r\n            \"Email\": {\r\n                \"expressionType\": 2,\r\n                \"parameter\": {\r\n                    \"dataValueType\": 1,\r\n                    \"value\": \"Kirill@gmail.com\"\r\n                }\r\n            },\r\n            \"Account\": {\r\n                \"expressionType\": 2,\r\n                \"parameter\": {\r\n                    \"dataValueType\": 0,\r\n                    \"value\": \"e308b781-3c5b-4ecb-89ef-5c1ed4da488e\"\r\n                }\r\n            }\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseUri}}0/DataService/json/SyncReply/InsertQuery",
+									"host": [
+										"{{BaseUri}}0"
+									],
+									"path": [
+										"DataService",
+										"json",
+										"SyncReply",
+										"InsertQuery"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "DELETE",
+					"item": [
+						{
+							"name": "Delete Contact By Id",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "BPMCSRF",
+										"value": "{{BPMCSRF}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rootSchemaName\": \"Contact\",\r\n    \"filters\": {\r\n\t\t\"items\": {\r\n            \"ById\": {\r\n                \"filterType\": 1,\r\n                \"comparisonType\": 3,\r\n                \"isEnabled\": true,\r\n                \"trimDateTimeParameterToDate\": false,\r\n                \"leftExpression\": {\r\n                    \"expressionType\": 0,\r\n                    \"columnPath\": \"Id\"\r\n                },\r\n                \"rightExpression\": {\r\n                    \"expressionType\": 2,\r\n                    \"parameter\": {\r\n                        \"dataValueType\": 0,\r\n                        \"value\": \"57066f54-75de-41a8-9239-905084c91d54\"\r\n                    }\r\n                }\r\n            }\r\n        },\r\n        \"logicalOperation\": 0,\r\n        \"isEnabled\": true,\r\n        \"filterType\": 6,\r\n        \"rootSchemaName\": \"Contact\"\r\n\t}\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseUri}}0/DataService/json/SyncReply/DeleteQuery",
+									"host": [
+										"{{BaseUri}}0"
+									],
+									"path": [
+										"DataService",
+										"json",
+										"SyncReply",
+										"DeleteQuery"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Contact By Id Copy",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "BPMCSRF",
+										"value": "{{BPMCSRF}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"QueryType\": 2,\r\n    \"Filters\": {\r\n        \"RootSchemaName\": null,\r\n        \"FilterType\": 0,\r\n        \"ComparisonType\": 0,\r\n        \"LogicalOperation\": 0,\r\n        \"IsNull\": true,\r\n        \"IsEnabled\": true,\r\n        \"IsNot\": false,\r\n        \"SubFilters\": null,\r\n        \"Items\": {\r\n            \"ById\": {\r\n                \"FilterType\": 1,\r\n                \"ComparisonType\": 3,\r\n                \"LogicalOperation\": 0,\r\n                \"IsNull\": true,\r\n                \"IsEnabled\": true,\r\n                \"IsNot\": false,\r\n                \"SubFilters\": null,\r\n                \"Items\": null,\r\n                \"LeftExpression\": {\r\n                    \"ExpressionType\": 0,\r\n                    \"IsBlock\": false,\r\n                    \"ColumnPath\": \"Id\",\r\n                    \"Parameter\": null,\r\n                    \"FunctionType\": 0,\r\n                    \"MacrosType\": 0,\r\n                    \"FunctionArgument\": null,\r\n                    \"FunctionArguments\": null,\r\n                    \"DateDiffInterval\": 0,\r\n                    \"DatePartType\": 0,\r\n                    \"AggregationType\": 0,\r\n                    \"AggregationEvalType\": 0,\r\n                    \"SubFilters\": null,\r\n                    \"ArithmeticOperation\": 0,\r\n                    \"LeftArithmeticOperand\": null,\r\n                    \"RightArithmeticOperand\": null\r\n                },\r\n                \"RightExpression\": {\r\n                    \"ExpressionType\": 2,\r\n                    \"IsBlock\": false,\r\n                    \"ColumnPath\": null,\r\n                    \"Parameter\": {\r\n                        \"DataValueType\": 0,\r\n                        \"Value\": \"8e007dd9-a112-47c2-b37b-66e9047c6314\",\r\n                        \"ArrayValue\": null,\r\n                        \"ShouldSkipConvertion\": false\r\n                    },\r\n                    \"FunctionType\": 0,\r\n                    \"MacrosType\": 0,\r\n                    \"FunctionArgument\": null,\r\n                    \"FunctionArguments\": null,\r\n                    \"DateDiffInterval\": 0,\r\n                    \"DatePartType\": 0,\r\n                    \"AggregationType\": 0,\r\n                    \"AggregationEvalType\": 0,\r\n                    \"SubFilters\": null,\r\n                    \"ArithmeticOperation\": 0,\r\n                    \"LeftArithmeticOperand\": null,\r\n                    \"RightArithmeticOperand\": null\r\n                },\r\n                \"RightExpressions\": null,\r\n                \"RightLessExpression\": null,\r\n                \"RightGreaterExpression\": null,\r\n                \"TrimDateTimeParameterToDate\": true,\r\n                \"Key\": null,\r\n                \"IsAggregative\": false,\r\n                \"LeftExpressionCaption\": null,\r\n                \"ReferenceSchemaName\": null\r\n            }\r\n        },\r\n        \"LeftExpression\": null,\r\n        \"RightExpression\": null,\r\n        \"RightExpressions\": null,\r\n        \"RightLessExpression\": null,\r\n        \"RightGreaterExpression\": null,\r\n        \"TrimDateTimeParameterToDate\": false,\r\n        \"Key\": null,\r\n        \"IsAggregative\": false,\r\n        \"LeftExpressionCaption\": null,\r\n        \"ReferenceSchemaName\": null\r\n    },\r\n    \"QueryId\": null,\r\n    \"QueryKind\": 0,\r\n    \"ColumnValues\": null,\r\n    \"RootSchemaName\": \"Contact\",\r\n    \"OperationType\": 0,\r\n    \"IncludeProcessExecutionData\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseUri}}0/DataService/json/SyncReply/DeleteQuery",
+									"host": [
+										"{{BaseUri}}0"
+									],
+									"path": [
+										"DataService",
+										"json",
+										"SyncReply",
+										"DeleteQuery"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "BATCH",
+					"item": [
+						{
+							"name": "Batch Example",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "BPMCSRF",
+										"value": "{{BPMCSRF}}",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"__type\": \"Terrasoft.Nui.ServiceModel.DataContract.SelectQuery\",\r\n            \"rootSchemaName\": \"Contact\",\r\n            \"columns\": {\r\n                \"items\": {\r\n                    \"Id\": {\r\n                        \"expression\": {\r\n                            \"columnPath\": \"Id\"\r\n                        }\r\n                    },\r\n                    \"Name\": {\r\n                        \"expression\": {\r\n                            \"columnPath\": \"Name\"\r\n                        }\r\n                    },\r\n                    \"Country\": {\r\n                        \"expression\": {\r\n                            \"columnPath\": \"Country.Name\"\r\n                        }\r\n                    },\r\n                    \"Email\": {\r\n                        \"expression\": {\r\n                            \"columnPath\": \"Email\"\r\n                        }\r\n                    }\r\n                }\r\n            },\r\n            \"useRecordDeactivation\": false,\r\n            \"ignoreDisplayValues\": true\r\n        },\r\n        {\r\n            \"__type\": \"Terrasoft.Nui.ServiceModel.DataContract.SelectQuery\",\r\n            \"rootSchemaName\": \"Contact\",\r\n            \"columns\": {\r\n                \"items\": {\r\n                    \"Id\": {\r\n                        \"expression\": {\r\n                            \"columnPath\": \"Id\"\r\n                        }\r\n                    },\r\n                    \"Name\": {\r\n                        \"expression\": {\r\n                            \"columnPath\": \"Name\"\r\n                        }\r\n                    },\r\n                    \"Country\": {\r\n                        \"expression\": {\r\n                            \"columnPath\": \"Country.Name\"\r\n                        }\r\n                    },\r\n                    \"Email\": {\r\n                        \"expression\": {\r\n                            \"columnPath\": \"Email\"\r\n                        }\r\n                    }\r\n                }\r\n            },\r\n            \"useRecordDeactivation\": false,\r\n            \"ignoreDisplayValues\": true\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseUri}}0/DataService/json/SyncReply/BatchQuery",
+									"host": [
+										"{{BaseUri}}0"
+									],
+									"path": [
+										"DataService",
+										"json",
+										"SyncReply",
+										"BatchQuery"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "OData",
+			"item": [
+				{
+					"name": "$filter parameter (eq operators) with or logical parameter",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ForceUseSession",
+								"type": "text",
+								"value": "true"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json; odata=verbose",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json; odata=verbose",
+								"type": "text"
+							},
+							{
+								"key": "BPMCSRF",
+								"type": "text",
+								"value": "{{BPMCSRF}}"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Name\": \"Kirill OData\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUri}}/0/odata/$metadata",
+							"host": [
+								"{{BaseUri}}"
+							],
+							"path": [
+								"0",
+								"odata",
+								"$metadata"
+							],
+							"query": [
+								{
+									"key": "$filter",
+									"value": "Name eq 'Supervisor Kirill Kirill'",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Request to the Creatio for getting filtered objects collection instances. or logical parameter with [$filter](https://www.odata.org/documentation/odata-version-3-0/odata-version-3-0-core-protocol/#thefiltersystemqueryoption) parameter using"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Custom Configuration Service",
+			"item": [
+				{
+					"name": "DemoPerson",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "BPMCSRF",
+								"value": "{{BPMCSRF}}",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"person\":{\r\n        \"firstName\": \"Kirill\",\r\n        \"lastName\": \"Kirill\",\r\n        \"email\": \"Kirill\",\r\n        \"age\": 40\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUri}}0/rest/FirstService/PostName",
+							"host": [
+								"{{BaseUri}}0"
+							],
+							"path": [
+								"rest",
+								"FirstService",
+								"PostName"
+							]
+						},
+						"description": "## See DeTrainingJuneClio.WebServices.FirstService for implementation"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var BPMCSRF = postman.getResponseCookie(\"BPMCSRF\").value;\r",
+							"pm.environment.set(\"BPMCSRF\", BPMCSRF);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"UserName\": \"{{UserName}}\",\r\n    \"UserPassword\": \"{{UserPassword}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUri}}ServiceModel/AuthService.svc/Login",
+					"host": [
+						"{{BaseUri}}ServiceModel"
+					],
+					"path": [
+						"AuthService.svc",
+						"Login"
+					]
+				},
+				"description": "**[Academy Reference Article](https://academy.creatio.com/docs/developer/back-end_development/configuration_web_service/configuration_web_service#case-1242)**\n\n\nThe cookies received in the HTTP response (BPMLOADER, .ASPXAUTH, BPMCSRF and UserName) are to be used in all further requests to Creatio services that require authentication data. \n\nUsing the **BPMCSRF** cookie and **BPMCSRF** token (see below) is required when protection from CSRF attacks is enabled. Add the “key-value” pair to the request caption. Use “BPMCSRF” as a key and the BPMCSRF cookie value as a value."
+			},
+			"response": []
+		},
+		{
+			"name": "Authentication Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json();\r",
+							"pm.environment.set(\"access_token\", response.access_token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{Client_Secret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{Client_Id}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Base_URL_IS}}connect/token",
+					"host": [
+						"{{Base_URL_IS}}connect"
+					],
+					"path": [
+						"token"
+					]
+				},
+				"description": "**[Academy Identity Service Configuration](https://academy.creatio.com/docs/user/setup_and_administration/on-site_deployment/deployment_additional_setup/set_up_oauth20_authorization_for_integrated_applications)**\n\nUse Authorization Header with every following requests, set Authoriation Header Value to\nBearer access_token"
+			},
+			"response": [
+				{
+					"name": "onSuccess token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL_IS}}/connect/token",
+							"host": [
+								"{{Base_URL_IS}}"
+							],
+							"path": [
+								"connect",
+								"token"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, max-age=0"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 12 May 2021 05:14:43 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"access_token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6IkY1MDgxRDAyNUE1QkZFRjJCRjQ5RTBFQTY2NENDMERBOTkyNDQzRjAiLCJ0eXAiOiJKV1QiLCJ4NXQiOiI5UWdkQWxwYl92S19TZURxWmt6QTJwa2tRX0EifQ.eyJuYmYiOjE2MjA3OTY0ODMsImV4cCI6MTYyMDgwMDA4MywiaXNzIjoiY3JlYXRpby5jb20iLCJhdWQiOlsiY3JlYXRpby5jb20vcmVzb3VyY2VzIiwiQXBwbGljYXRpb25BY2Nlc3NfY2ExYTZiY2QxNjE4NGQ3ODg1ZDU3MjcyZTE4OWQwZGQiXSwiY2xpZW50X2lkIjoiOTZGN0ZCQkJGMUREMURCMjRCRTE5NDIzOUEzNkExODUiLCJwcm9wOlN5c0FkbWluVW5pdElkIjoiN2YzYjg2OWYtMzRmMy00ZjIwLWFiNGQtNzQ4MGE1ZmRmNjQ3IiwicHJvcDpUeXBlIjoiQXBwbGljYXRpb25BY2Nlc3MiLCJwcm9wOk93bmVyQ2xpZW50SWQiOiJjcmVhdGlvLWRlc2lnbmVyIiwicHJvcDpSZXNvdXJjZUlkIjoiQXBwbGljYXRpb25BY2Nlc3NfY2ExYTZiY2QxNjE4NGQ3ODg1ZDU3MjcyZTE4OWQwZGQiLCJzY29wZSI6WyJBcHBsaWNhdGlvbkFjY2Vzc19jYTFhNmJjZDE2MTg0ZDc4ODVkNTcyNzJlMTg5ZDBkZCJdfQ.vinLY6E3lTsq94vRlOh7aq3hDKEBHpGU-IZOhP2zhYca9NZTLrSgKxmfxqtJjBYmdqQ2UkuaJm83j1FgQT54-iKipmukhiw9jPmQ5gtH0OJ_XusNZ9jqDrcil6COdiOIM7L2Nc4BRN4LNUNVnNaMir8EMcua7f1vIkr7Wz_QXgFpz8kD2RH9xgYttCvSfT8bQLELP5ldwGKkigagCmAFt7CNkMZG8bJV1Y3i7rZIVDM_qGhCU2gnHaMaSulwYEpXjobeJK-_3qG_SHhmTzehrG4F1i_mUxx8T3QwKCBx9aNUxiOzIVSquOfcH2XEtxuPqLZ9zSMeiZFo7rZiJdhvNA\",\n    \"expires_in\": 3600,\n    \"token_type\": \"Bearer\"\n}"
+				},
+				{
+					"name": "onFail token",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Base_URL_IS}}/connect/token",
+							"host": [
+								"{{Base_URL_IS}}"
+							],
+							"path": [
+								"connect",
+								"token"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Cache-Control",
+							"value": "no-store, no-cache, max-age=0"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=UTF-8"
+						},
+						{
+							"key": "Server",
+							"value": "Microsoft-IIS/10.0"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "ASP.NET"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 12 May 2021 05:16:04 GMT"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"invalid_request\"\n}"
+				}
+			]
+		}
+	]
+}

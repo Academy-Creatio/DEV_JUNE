@@ -11,18 +11,18 @@
 - [File System Mode][fsmode] - WIKI how to enable development in filesystem mode
 - [Custom Logging][nlog] - How to enable custom logging
 - [FTP] - Download Creatio
-<!-- 
-- [Odata] postman collection
 - Import Postman Environment and Collection from Postman folder. This folder includes DataService requests
 - [Import Visual Studio][vsTpl] Templates provided in VisualStudioTemplate folder. -->
+<!-- 
+- [Odata] postman collection
 
 
 ## SESSION VIDEO RECODING
 |Day|Download Link|
 |:--:|:--:|
 |1|[Link][d1v]|
-<!-- 
 |2|[Link][d2v]|
+<!-- 
 |3|[Link][d3v]|
 |4|[Link][d4v]|
 |5|[Link][d5v]|
@@ -45,8 +45,8 @@ Thank you for having taken development training with me. In order to make this c
 
 <!-- Named Links -->
 [d1v]: https://creatio-global.zoom.us/rec/play/INgA3BOj__NJXXKXgRMr9aaX4QREQOOQ4hp6stmC9oTkTKvqEWlOBheUk7F-IM3gw0LjqxuegQMBWVzq.Y-M9Yczw2qWGchug
+[d2v]: https://creatio-global.zoom.us/rec/play/Jd8mD0mr9yj-sEPGGtrSMTZmyRC-1HAvWLbHr58s0ICSHpou5iNTs_uDjS3QJbPD7jZgUdDDwJLMOos.0-y9nD2cqqW5fTbX
 <!-- 
-[d2v]: 
 [d3v]: 
 [d4v]: 
 [d5v]: 

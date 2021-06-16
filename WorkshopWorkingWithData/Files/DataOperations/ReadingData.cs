@@ -52,12 +52,20 @@ namespace WorkshopWorkingWithData.Files.DataOperations
 		}
 		internal Tuple<DataTable, string> GetAllContactsCustomQuery()
 		{
-
-			//CustomQuery custom = new CustomQuery(UserConnection,
-			//	"Select Id, Name, Phone, Email from Contact");
-			
-			CustomQuery custom = new CustomQuery(UserConnection,
+			CustomQuery custom = default;
+			if(UserConnection.DBEngine.DBEngineType == DBEngineType.MSSql)
+			{
+				custom = new CustomQuery(UserConnection,
+					"Select Id, Name, Phone, Email from Contact");
+			}else if (UserConnection.DBEngine.DBEngineType == DBEngineType.PostgreSql)
+			{
+				custom = new CustomQuery(UserConnection,
 				"Select \"Id\", \"Name\", \"Phone\", \"Email\" from public.\"Contact\"");
+			}
+			else
+			{
+				throw new NotSupportedException("This package does not provide support for CustomQuery");
+			}
 
 			DataTable dt;
 			using (DBExecutor dbExecutor = UserConnection.EnsureDBConnection(QueryKind.General))
