@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharedFunctions.API</name>
+    </assembly>
+    <members>
+        <member name="T:SharedFunctions.API.IBusinessLogic">
+            <summary>
+            Contract for BusinessLogic Implementation
+            </summary>
+        </member>
+        <member name="M:SharedFunctions.API.IBusinessLogic.Add(System.Double,System.Double)">
+            <summary>
+            Adds two doubles and returns the result
+            </summary>
+            <param name="a">First number</param>
+            <param name="b">Second Number</param>
+            <returns>Sum of two number (a+b)</returns>
+        </member>
+        <member name="M:SharedFunctions.API.IBusinessLogic.Divide(System.Double,System.Double)">
+            <summary>
+            Divides a by b
+            </summary>
+            <param name="a">First number</param>
+            <param name="b">Second Number</param>
+            <returns>a over b (a/b)</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">Thrown when the <paramref name="b"/> is zero</exception>
+        </member>
+        <member name="M:SharedFunctions.API.IBusinessLogic.Multiply(System.Double,System.Double)">
+            <summary>
+            Multiplies a by b
+            </summary>
+            <param name="a">First number</param>
+            <param name="b">Second Number</param>
+            <returns>The product of a and b (a*b)</returns>
+        </member>
+        <member name="M:SharedFunctions.API.IBusinessLogic.Subtract(System.Double,System.Double)">
+            <summary>
+            Subtracts b from a
+            </summary>
+            <param name="a">First number</param>
+            <param name="b">Second Number</param>
+            <returns>The difference between a and b (a-b)</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:SharedFunctions.API.ILogger" -->
+        <member name="M:SharedFunctions.API.ILogger.GetLogger">
+            <summary>
+            Gets and instance of a a logger;
+            </summary>
+            <returns>Instance of a logger</returns>
+            <remarks>
+            Use constructor to specify loggerKey
+            </remarks>
+        </member>
+        <member name="T:SharedFunctions.API.ISearcher">
+            <summary>
+            Make sure to provide UserConnection in constructor
+            </summary>
+        </member>
+        <member name="M:SharedFunctions.API.ISearcher.DoSearch">
+            <summary>
+            Will return current user name from UserConnection
+            </summary>
+            <returns>User name from UserConnection</returns>
+        </member>
+    </members>
+</doc>

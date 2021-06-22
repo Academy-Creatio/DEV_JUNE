@@ -1,0 +1,17 @@
+﻿{
+  "Descriptor": {
+    "UId": "373a1e32-42d6-4bbe-a6e5-2187a85a1556",
+    "PackageVersion": "7.8.0",
+    "Name": "SharedFunctions",
+    "ModifiedOnUtc": "\/Date(1624381709000)\/",
+    "Maintainer": "Customer",
+    "Description": "Dev Training - Working with Data",
+    "DependsOn": [
+      {
+        "UId": "2fabaf6c-0f92-4530-aef8-40345c021da2",
+        "PackageVersion": "7.8.0",
+        "Name": "ProductCore"
+      }
+    ]
+  }
+}
