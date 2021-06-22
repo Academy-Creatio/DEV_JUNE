@@ -1,0 +1,17 @@
+{
+  "Descriptor": {
+    "UId": "9774ec02-5b75-4fb3-b6a1-63f1d80060e7",
+    "PackageVersion": "7.8.0",
+    "Name": "Events",
+    "ModifiedOnUtc": "/Date(1624295103000)/",
+    "Maintainer": "Customer",
+    "Description": "Event handling in Creation",
+    "DependsOn": [
+		{
+			"UId": "2fabaf6c-0f92-4530-aef8-40345c021da2",
+			"PackageVersion": "7.8.0",
+			"Name": "ProductCore"
+		  }
+    ]
+  }
+}
