@@ -10,7 +10,32 @@
       "B3": [],
       "B6": "373a1e32-42d6-4bbe-a6e5-2187a85a1556",
       "B8": "7.18.0.1353",
-      "FJ1": [],
+      "FJ1": [
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaParameter",
+          "UId": "ecffa3ad-fb4d-4e5a-bdc9-76114c08c60e",
+          "A2": "inA",
+          "A3": "6fbdce5e-9f64-400a-8978-4add0a75a736",
+          "A4": "6fbdce5e-9f64-400a-8978-4add0a75a736",
+          "L1": "a4aaf398-3531-4a0d-9d75-a587f5b5b59e",
+          "L8": {
+            "GS5": "6fbdce5e-9f64-400a-8978-4add0a75a736"
+          },
+          "L12": 0
+        },
+        {
+          "BL1": "Terrasoft.Core.Process.ProcessSchemaParameter",
+          "UId": "54504f8e-53af-4426-8355-6a72f9004b9d",
+          "A2": "inB",
+          "A3": "6fbdce5e-9f64-400a-8978-4add0a75a736",
+          "A4": "6fbdce5e-9f64-400a-8978-4add0a75a736",
+          "L1": "a4aaf398-3531-4a0d-9d75-a587f5b5b59e",
+          "L8": {
+            "GS5": "6fbdce5e-9f64-400a-8978-4add0a75a736"
+          },
+          "L12": 0
+        }
+      ],
       "IJ1": true,
       "BK8": "bb4d6607-026b-4b27-b640-8f5c77c1e89d",
       "IJ10": true,
@@ -38,8 +63,9 @@
           "GT5": "6c6ac7d5-e242-164b-b299-a789cf958ae0",
           "GT4": "776e80d1-8ebc-4395-a4c5-2476100c8778",
           "GT1": {
-            "GS1": 1,
-            "GS2": "100"
+            "GS1": 3,
+            "GS2": "[#[IsOwnerSchema:false].[IsSchema:false].[Parameter:{ecffa3ad-fb4d-4e5a-bdc9-76114c08c60e}]#]",
+            "GS5": "6fbdce5e-9f64-400a-8978-4add0a75a736"
           }
         },
         {
@@ -53,8 +79,9 @@
           "GT5": "62aa8627-ba5d-f2b9-ad9f-25c954903582",
           "GT4": "776e80d1-8ebc-4395-a4c5-2476100c8778",
           "GT1": {
-            "GS1": 1,
-            "GS2": "15"
+            "GS1": 3,
+            "GS2": "[#[IsOwnerSchema:false].[IsSchema:false].[Parameter:{54504f8e-53af-4426-8355-6a72f9004b9d}]#]",
+            "GS5": "6fbdce5e-9f64-400a-8978-4add0a75a736"
           }
         },
         {
@@ -68,8 +95,7 @@
           "GT5": "5656f3f1-0384-a146-cf47-d6794c0339b2",
           "GT4": "776e80d1-8ebc-4395-a4c5-2476100c8778",
           "GT1": {
-            "GS1": 1,
-            "GS2": "Add"
+            "GS1": 1
           }
         },
         {
@@ -84,7 +110,6 @@
           "GT4": "b5936328-09b2-45fd-b763-48d37c265644",
           "GT1": {
             "GS1": 1,
-            "GS2": "Show Result",
             "GS5": "6fbdce5e-9f64-400a-8978-4add0a75a736"
           }
         },
@@ -135,8 +160,7 @@
           "GT5": "c06c5f05-0d52-4832-ab0f-89688bf8a3eb",
           "GT4": "b5936328-09b2-45fd-b763-48d37c265644",
           "GT1": {
-            "GS1": 1,
-            "GS2": "{\"$type\":\"System.Collections.Generic.List`1[[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object, mscorlib]], mscorlib]], mscorlib\",\"$values\":[{\"$type\":\"System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object, mscorlib]], mscorlib\",\"Id\":\"960701bd-4463-46d5-96e2-e030a8c1879b\",\"isEnabled\":true,\"performValidation\":true,\"caption\":\"OK\",\"name\":\"Ok\",\"style\":\"default\",\"generateSignal\":\"\"}]}"
+            "GS1": 1
           }
         },
         {
@@ -151,7 +175,8 @@
           "GT4": "b5936328-09b2-45fd-b763-48d37c265644",
           "GT1": {
             "GS1": 1,
-            "GS2": "{\"$type\":\"System.Collections.Generic.List`1[[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object, mscorlib]], mscorlib]], mscorlib\",\"$values\":[{\"$type\":\"System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object, mscorlib]], mscorlib\",\"Id\":\"71b2c464-ddb0-4732-8997-8245c1b6f986\",\"controlEditType\":\"5\",\"caption\":\"Result\",\"name\":\"Result\",\"text\":\"\",\"isMultiline\":false,\"isRequired\":false,\"canBeMinimized\":true,\"minimized\":false,\"dataSource\":null,\"dataFilter\":\"\",\"controlDataValueType\":null,\"dateTimeFormat\":null}]}"
+            "GS2": "{\"$type\":\"System.Collections.Generic.List`1[[System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object, mscorlib]], mscorlib]], mscorlib\",\"$values\":[{\"$type\":\"System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object, mscorlib]], mscorlib\",\"Id\":\"71b2c464-ddb0-4732-8997-8245c1b6f986\",\"controlEditType\":\"5\",\"caption\":\"Result\",\"name\":\"Result\",\"text\":\"\",\"isMultiline\":false,\"isRequired\":false,\"canBeMinimized\":true,\"minimized\":false,\"dataSource\":null,\"dataFilter\":\"\",\"controlDataValueType\":\"10\",\"dateTimeFormat\":\"7\"}]}",
+            "GS5": "6fbdce5e-9f64-400a-8978-4add0a75a736"
           }
         },
         {
@@ -270,6 +295,7 @@
           "A5": "373a1e32-42d6-4bbe-a6e5-2187a85a1556",
           "BL7": "11a47caf-a0d5-41fa-a274-a0b11f77447a",
           "BL8": "6fbdce5e-9f64-400a-8978-4add0a75a736",
+          "BM1": 0,
           "BM4": [
             {
               "BL1": "Terrasoft.Core.Process.ProcessSchemaLane",
@@ -304,7 +330,8 @@
           "BL8": "6fbdce5e-9f64-400a-8978-4add0a75a736",
           "BN2": "31;31",
           "BO3": true,
-          "FC1": []
+          "FC1": [],
+          "ED1": false
         },
         {
           "BL1": "Terrasoft.Core.Process.ProcessSchemaTerminateEvent",
@@ -333,6 +360,7 @@
           "BL7": "1418e61a-82c3-403e-8221-01088f52c125",
           "BL8": "6fbdce5e-9f64-400a-8978-4add0a75a736",
           "BN2": "69;55",
+          "BO3": true,
           "BP2": [
             {
               "BL1": "Terrasoft.Core.Process.ProcessSchemaParameter",
@@ -355,8 +383,8 @@
               "IL2": "18ad18ea-2f67-425f-aa24-b02265d6aa04",
               "L1": "a4aaf398-3531-4a0d-9d75-a587f5b5b59e",
               "L8": {
-                "GS1": 1,
-                "GS2": "100",
+                "GS1": 3,
+                "GS2": "[#[IsOwnerSchema:false].[IsSchema:false].[Parameter:{ecffa3ad-fb4d-4e5a-bdc9-76114c08c60e}]#]",
                 "GS5": "6fbdce5e-9f64-400a-8978-4add0a75a736"
               },
               "L6": true,
@@ -371,8 +399,8 @@
               "IL2": "18ad18ea-2f67-425f-aa24-b02265d6aa04",
               "L1": "a4aaf398-3531-4a0d-9d75-a587f5b5b59e",
               "L8": {
-                "GS1": 1,
-                "GS2": "15",
+                "GS1": 3,
+                "GS2": "[#[IsOwnerSchema:false].[IsSchema:false].[Parameter:{54504f8e-53af-4426-8355-6a72f9004b9d}]#]",
                 "GS5": "6fbdce5e-9f64-400a-8978-4add0a75a736"
               },
               "L6": true,
