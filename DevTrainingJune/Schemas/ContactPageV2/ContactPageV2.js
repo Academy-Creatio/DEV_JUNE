@@ -1,4 +1,4 @@
-define("ContactPageV2", ["ContactPageV2Resources", "ProcessModuleUtilities"], 
+define("ContactPageV2", ["ContactPageV2Resources", "ProcessModuleUtilities", "DevTrainingMixin"], 
 function(resources, ProcessModuleUtilities) {
 	return {
 		entitySchemaName: "Contact",
@@ -21,9 +21,22 @@ function(resources, ProcessModuleUtilities) {
 				]
 			},
 		},
+		mixins: {
+			"DevTrainingMixin": "Terrasoft.DevTrainingMixin"
+		},
 		modules: /**SCHEMA_MODULES*/{}/**SCHEMA_MODULES*/,
 		details: /**SCHEMA_DETAILS*/{}/**SCHEMA_DETAILS*/,
 		businessRules: /**SCHEMA_BUSINESS_RULES*/{}/**SCHEMA_BUSINESS_RULES*/,
+		messages:{
+			/**
+			 * Published on: ContactSectionV2
+			 * @tutorial https://academy.creatio.com/docs/developer/front-end_development/sandbox_component/module_message_exchange
+			 */
+			 "SectionActionClicked":{
+				mode: this.Terrasoft.MessageMode.PTP,
+				direction: this.Terrasoft.MessageDirectionType.SUBSCRIBE
+			}
+		},
 		methods: {
 			/**
 			 * Initializes the initial values of the model.
@@ -33,6 +46,18 @@ function(resources, ProcessModuleUtilities) {
 			 */
 			init: function() {
 				this.callParent(arguments);
+				this.subscribeToMessages();
+			},
+			subscribeToMessages: function(){
+				this.sandbox.subscribe(
+					"SectionActionClicked",
+					function(){this.onSectionMessageReceived();},
+					this,
+					[this.sandbox.id]
+				)
+			},
+			onSectionMessageReceived: function(){
+				this.showInformationDialog("Message received");
 			},
 
 			/**
@@ -132,6 +157,38 @@ function(resources, ProcessModuleUtilities) {
 				return collection;
 			},
 
+			onMyMainButtonClick: function(){
+				var tag = arguments[3];
+				this.doESQ();
+				this.showInformationDialog("Red button clicked with tag " + tag);
+			},
+			onMySubButtonClick: function(){
+				var tag = arguments[0];
+				this.showInformationDialog("Red button clicked with tag " + tag);
+			},
+
+
+			/**
+			 * Validation
+			 * @tutorial https://academy.creatio.com/docs/developer/getting_started/develop_your_first_application/step_3_add_page_validation
+			 */
+
+			setValidationConfig: function() {
+				this.callParent(arguments);
+				this.addColumnValidator("Name", this.nameValidator);
+			},
+			nameValidator: function() {
+				var invalidMessageText= "";
+				if (this.$Name.length >5.) {
+					invalidMessageText = "";
+				}
+				else {
+					invalidMessageText = "Email Validation Failed";
+				}
+				return {
+				invalidMessage: invalidMessageText
+				};
+			}
 		},
 		dataModels: /**SCHEMA_DATA_MODELS*/{}/**SCHEMA_DATA_MODELS*/,
 		diff: /**SCHEMA_DIFF*/[
@@ -151,6 +208,63 @@ function(resources, ProcessModuleUtilities) {
 				"parentName": "ContactGeneralInfoBlock",
 				"propertyName": "items",
 				"index": 6
+			},
+
+			/** BUTTONS in left container */
+
+			{
+				"operation": "insert",
+				"name": "PrimaryContactButtonRed",
+				"parentName": "LeftContainer",
+				"propertyName": "items",
+				"values":{
+					itemType: this.Terrasoft.ViewItemType.BUTTON,
+					style: Terrasoft.controls.ButtonEnums.style.RED,
+					classes: {
+						"textClass": ["actions-button-margin-right"],
+						"wrapperClass": ["actions-button-margin-right"]
+					},
+					caption: {bindTo: "Resources.Strings.MyRedBtnCaption"},
+					hint: {bindTo:"Resources.Strings.MyRedBtnHint"},
+					click: {"bindTo": "onMyMainButtonClick"},
+					tag: "LeftContainer_Red"
+				}
+			},
+			{
+				"operation": "insert",
+				"name": "MyGreenButton",
+				"parentName": "LeftContainer",
+				"propertyName": "items",
+				"values":{
+					"itemType": this.Terrasoft.ViewItemType.BUTTON,
+					"style": Terrasoft.controls.ButtonEnums.style.GREEN,
+					// classes: {
+					// 	"textClass": ["actions-button-margin-right"],
+					// 	"wrapperClass": ["actions-button-margin-right"]
+					// },
+					"caption": "Page Green button",
+					"hint": "Page green button hint <a href=\"https://google.ca\"> Link to help",
+					"click": {"bindTo": "onMyMainButtonClick"},
+					tag: "LeftContainer_Green",
+					"menu":{
+						"items": [
+							{
+								caption: "Sub Item 1",
+								click: {bindTo: "onMySubButtonClick"},
+								visible: true,
+								hint: "Sub item 1 hint",
+								tag: "subItem1"
+							},
+							{
+								caption: "Sub Item 2",
+								click: {bindTo: "onMySubButtonClick"},
+								visible: true,
+								hint: "Sub item 2 hint",
+								tag: "subItem2"
+							}
+						]
+					}
+				}
 			}
 		]/**SCHEMA_DIFF*/
 	};

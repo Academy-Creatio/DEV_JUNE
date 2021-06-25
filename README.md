@@ -27,9 +27,7 @@
 |5|[Link][d5v]|
 |6|[Link][d6v]|
 |7|[Link][d7v]|
-<!-- 
 |8|[Link][d8v]| 
--->
 
 ---
 ## [Feedback][feedBackForm]
@@ -51,9 +49,7 @@ Thank you for having taken development training with me. In order to make this c
 [d5v]: https://creatio-global.zoom.us/rec/share/XjQVe1HKiYXSAZf3GXl1KkTrPrWXh85m_BIpFEH7YmOqRAw67w9bQ3feGrLb_Xuq.JEginMv4DcYEZq7Z
 [d6v]: https://creatio-global.zoom.us/rec/share/8qa2Qqpd9Tmi89WvSvJyWUmAHDKnByb1mqsErytarfoqgXPgvKPbtZegtCov9x6S.KwsQ1kDPdYuE23-V
 [d7v]: https://creatio-global.zoom.us/rec/share/E79YR7YYe3fF6WrXXndbI_KGEHXltAH8JL9-qaNz4DTGFC1LAdUOJeLr8tjmhbtv.-sPu7UZhDMRVBkCV
-<!-- 
-[d8v]:  
--->
+[d8v]: https://creatio-global.zoom.us/rec/share/7p4Rsvt-OemjhfusK-IM5Oy2GeqWURSyxJVQrDxqJnQkPFeXNSE5JG6iq4AI2CNk.eqSIu-Gh6nQljv5U
 
 <!-- Links -->
 [clio]:https://github.com/Advance-Technologies-Foundation/clio

@@ -13,6 +13,8 @@
 			<Item Name="LocalizableStrings.EnrichCloudCaption.Value" Value="New data found" />
 			<Item Name="LocalizableStrings.ESNTabCaption.Value" Value="Feed" />
 			<Item Name="LocalizableStrings.FillContactWithSocialNetworksDataActionCaption.Value" Value="Update with social networks data" />
+			<Item Name="LocalizableStrings.MyRedBtnCaption.Value" Value="Page Red Button" />
+			<Item Name="LocalizableStrings.MyRedBtnHint.Value" Value="Page red button hunt" />
 			<Item Name="LocalizableStrings.RelationshipTabCaption.Value" Value="Connected to" />
 			<Item Name="LocalizableStrings.SubActionOneCaption.Value" Value="Sub Action One" />
 			<Item Name="LocalizableStrings.SubActionTwoCaption.Value" Value="Sub Action Two" />
